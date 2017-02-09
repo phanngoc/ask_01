@@ -11,7 +11,7 @@ class Question < ApplicationRecord
   has_many :answers, foreign_key: "reply_to"
 
   validates :title, presence: true
-  validates :content, length: {maximum: 255}
+  validates :content, presence: true, length: {maximum: 255}
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
