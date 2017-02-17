@@ -38,8 +38,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    isDestroyed = Comment.destroyed? params[:id]
-    if isDestroyed
+    comment = Comment.destroy params[:id]
+    if comment.destroyed?
       result = {status: Settings.status.ok}
     else
       result = {status: Settings.status.not_ok}

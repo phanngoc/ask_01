@@ -32,6 +32,8 @@ gem "config"
 gem "will_paginate", "~> 3.1.0"
 gem "ransack"
 gem "public_activity"
+gem "cancancan"
+gem "kaminari"
 
 group :development, :test do
   gem "byebug", platform: :mri
