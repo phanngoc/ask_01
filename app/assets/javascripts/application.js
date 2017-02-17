@@ -23,4 +23,5 @@
 //= require tinymce/tinymce
 //= require i18n
 //= require i18n/translations
+//= require admin-lte
 //= require_tree .
