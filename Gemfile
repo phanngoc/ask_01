@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem "rails", "~> 5.0.1"
-gem "sqlite3"
 gem "puma", "~> 3.0"
 gem "bootstrap-sass", "~> 3.3.6"
 gem "sass-rails", "~> 5.0"
@@ -34,6 +33,8 @@ gem "ransack"
 gem "public_activity"
 gem "cancancan"
 gem "kaminari"
+gem "wdm", ">= 0.1.0" if Gem.win_platform?
+gem "pg"
 
 group :development, :test do
   gem "byebug", platform: :mri

@@ -9,13 +9,26 @@ question_ids = []
 answer_ids = []
 comment_ids = []
 
+name = "Phan Ngoc"
+user = User.new
+user.name = name
+user.email = "lequidon.1993@gmail.com"
+user.password = "123456"
+user.story = Faker::Lorem.sentence
+user.role = 0
+File.open(path) do |f|
+  user.avatar = f
+end
+user.save!
+user_ids.push user.id
+
 10.times do
   name = Faker::Name.name
   user = User.new
   user.name = name
   user.email = Faker::Internet.email
-  user.encrypted_password = "$2a$11$gHWhyOjpXvNJWzqKnwbdTesD87G0MSZV8UH0FRKeByvEz5xjIwSfC"
-
+  user.password = "123456"
+  user.role = 1
   File.open(path) do |f|
     user.avatar = f
   end
@@ -27,8 +40,10 @@ topic_list = [
   [ "Scientic", "Day la chuyen muc scientic"],
   [ "E commerce", "Day la chuyen muc e commerce"],
   [ "Trending", "Day la chuyen muc trending"],
-  [ "Architect", "Day la chuyen muc architect"]
+  [ "Architect", "Day la chuyen muc architect"],
+  [ "Trending", "Day la chuyen muc Trending"]
 ]
+
 topic_list.each do |name, description, icon|
   topic = Topic.new
   topic.name = name
