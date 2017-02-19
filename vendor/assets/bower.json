@@ -13,6 +13,7 @@
     "admin-lte": "latest",
     "datatables.net": "latest",
     "datatables.net-dt": "latest",
-    "simplemde": "latest"
+    "simplemde": "latest",
+    "marked": "latest"
   }
 }
