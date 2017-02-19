@@ -23,4 +23,7 @@ $(document).ready(function () {
     tinyMCE.triggerSave();
   });
 
+  $(".editor_mde").each(function(index, elem) {
+    var simplemde = new SimpleMDE({ element: elem });
+  });
 });
