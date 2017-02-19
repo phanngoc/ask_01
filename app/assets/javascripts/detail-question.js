@@ -28,7 +28,7 @@ $(document).ready(function () {
   });
 
   $(".marked").each(function(index, elem) {
-    var textMarkdown = marked($(elem).text());
+    var textMarkdown = marked($(elem).html().trim());
     $(elem).html(textMarkdown);
   });
 });
