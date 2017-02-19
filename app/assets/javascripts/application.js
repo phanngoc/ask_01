@@ -24,4 +24,6 @@
 //= require i18n
 //= require i18n/translations
 //= require admin-lte
+//= require marked
+//= require simplemde/dist/simplemde.min.js
 //= require_tree .
