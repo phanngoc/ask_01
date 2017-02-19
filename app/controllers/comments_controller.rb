@@ -39,6 +39,9 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.destroy params[:id]
+    @activity = PublicActivity::Activity.where(trackable_id: params[:id],
+      trackable_type: Action.target_acts[:comment])
+    @activity.destroy_all
     if comment.destroyed?
       result = {status: Settings.status.ok}
     else

@@ -34,7 +34,6 @@ gem "ransack"
 gem "public_activity"
 gem "cancancan"
 gem "kaminari"
-
 gem "wdm", ">= 0.1.0" if Gem.win_platform?
 gem "pg"
 
