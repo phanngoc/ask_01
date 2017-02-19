@@ -20,7 +20,8 @@
 //= require react_ujs
 //= require classnames
 //= require underscore
-//= require tinymce/tinymce
+//= require tinymce/jquery.tinymce.min
+//= require tinymce/tinymce.min
 //= require i18n
 //= require i18n/translations
 //= require admin-lte
