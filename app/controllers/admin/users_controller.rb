@@ -1,7 +1,8 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users = User.page(params[:page]).per Settings.admin.per_page;
+    @users = Kaminari.paginate_array(User.order("created_at desc"))
+      .page(params[:page]).per(Settings.admin.per_page);
   end
 
   def edit

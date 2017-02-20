@@ -1,7 +1,8 @@
 class Admin::TopicsController < AdminController
 
   def index
-    @topics = Topic.page(params[:page]).per Settings.admin.per_page
+    @topics = Kaminari.paginate_array(Topic.order("created_at desc"))
+      .page(params[:page]).per Settings.admin.per_page
   end
 
   def new
@@ -45,14 +46,17 @@ class Admin::TopicsController < AdminController
   def create
     @topic = Topic.new topic_params
     if @topic.save
+      flash[:success] = t "flash.admin.topic.create.success"
       redirect_to admin_topics_path
     else
+      flash[:danger] = t "flash.admin.topic.create.failed"
       redirect_to :back
     end
   end
 
   private
+
   def topic_params
-    params.require(:topic).permit(:icon, :name, :description)
+    params.require(:topic).permit :icon, :name, :description
   end
 end
