@@ -27,6 +27,7 @@
 //= require admin-lte
 //= require marked
 //= require simplemde/dist/simplemde.min.js
+//= require jsdiff
 //= require social-share-button
 //= require Chart.bundle
 //= require chartkick
