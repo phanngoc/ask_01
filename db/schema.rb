@@ -13,10 +13,12 @@
 ActiveRecord::Schema.define(version: 20170222065329) do
 
   create_table "actions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
-    t.integer "actionable_id"
-    t.string  "actionable_type"
-    t.integer "type_act"
+    t.integer  "user_id"
+    t.integer  "actionable_id"
+    t.string   "actionable_type"
+    t.integer  "type_act"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -121,13 +123,6 @@ ActiveRecord::Schema.define(version: 20170222065329) do
     t.string   "slug"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "user_topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "topic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
