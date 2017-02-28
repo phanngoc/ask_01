@@ -24,7 +24,17 @@ class Question < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  def self.new_feed_login(user_id, page)
+  scope :with_ac_user, ->{joins(actions: :user)}
+
+  scope :with_ac, ->{joins(:actions)}
+
+  scope :ac_protect, ->id{where(actions: {actionable_id: id, type_act: Action.type_acts[:protect]})}
+
+  scope :lastday, ->{where updated_at: 1.day.ago..Time.now}
+
+  scope :lastest, ->{order created_at: :desc}
+
+  def self.new_feed_login user_id
     sql = "select q.*, (case when EXISTS(
       select * from actions a where a.user_id = #{user_id}
         and a.type_act = #{Action.type_acts[:follow]} and a.actionable_type =
@@ -35,23 +45,72 @@ class Question < ApplicationRecord
       where an.reply_to = q.id) as number_answer
       from questions q order by q.updated_at desc, is_follow desc,
       number_answer desc, q.up_vote desc";
-    per_page = Settings.home.per_page;
-    @questions = Question.includes([:topics, :user, :actions]).paginate_by_sql(sql,
-      page: page, per_page: per_page)
-    return @questions
+    @questions = Question.includes([:topics, :user, :actions])
+      .find_by_sql(sql)
   end
 
-  def self.find_muti id
-    question = Question.find_by slug: id
-    unless question
-      question = Question.find_by id: id
-      if question
-        return question
-      else
-        return false
-      end
+  def isProtected
+    havePro = Question.with_ac.ac_protect self.id
+    havePro.length != 0
+  end
+
+  def dataProtected
+    havePro = Question.with_ac_user.ac_protect(self.id).first
+    if havePro
+      havePro.actions.first
     else
-      return question
+      nil
     end
+  end
+
+  class << self
+    include Common
+
+    def find_muti id
+      question = Question.find_by slug: id
+      unless question
+        question = Question.find_by id: id
+        if question
+          return Question.wrap_content(question)
+        else
+          return false
+        end
+      else
+        return Question.wrap_content(question)
+      end
+    end
+
+    def wrap_content question
+      verque = Verque.find_newest question.id
+      if verque
+        question.title = verque.title
+        question.content = verque.content
+      end
+      question
+    end
+
+    def graph_question_created
+      Question.group_by_day(:created_at).count
+    end
+
+    def graph_question_upvote
+      Action.target(Action.target_acts[:question])
+        .is_upvote.group_by_day(:created_at).count
+    end
+
+    def graph_percentage_type
+      Action.group(:type_act).count
+    end
+  end
+
+  def graph_up_vote
+    Action.with_id(self.id)
+      .target(Action.target_acts[:question])
+      .is_upvote.group_by_day(:created_at).count
+  end
+
+  def graph_show_answer
+    Answer.where(reply_to: self.id)
+      .group_by_day(:created_at).count
   end
 end

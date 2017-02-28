@@ -49,6 +49,7 @@ en:
         register_date: "Registed date"
         role: "Role"
         action: "Action"
+        btn_export_csv: "Export csv"
       edit:
         title: "Edit user"
         sub_title: "Edit information of user"
@@ -73,6 +74,14 @@ en:
           user: "User"
           topic: "Topics"
           action: "Action"
+        count_question_created: "Count question is created"
+        analytic_up_vote: "Analytics up vote"
+        percentage_action: "Percentage action"
+      show:
+        title: "Question detail"
+        sub_title: "Question detail"
+        analytic: "Analytics"
+        number_answer: "Number answer analytic"
 
   search_page:
     title: "Result search for work:"
@@ -145,6 +154,15 @@ en:
     link_to_answer: "Please %{link} to answer question."
     errors:
       not_empty_comment: "Your comment can't empty"
+    save_question: "Save question"
+    select_question_to_edit: "Select version edit"
+    edit_question: "Edit question"
+    approve_version: "Approve version"
+    edit_direct: "Edit direct"
+    alert_protect: "This question is protected by"
+    protect: "Protect"
+    unprotect: "Unprotect"
+    alert: "Alert"
 
   home_page:
     home: "Home"
@@ -191,9 +209,23 @@ en:
       unfollow: "Unfollow"
       follower: "Follower"
 
+  version_question:
+    approve: "Approve"
+    reject: "Reject"
+    approved: "Approved"
+    rejected: "Rejected"
+    rev: "Rev"
+    pending: "Pending"
+    all: "All"
+
   flash:
     question:
       not_found: "Question is not found"
+      verify_admin_mod_owner: "You don't have permission to edit this page"
+      protect_question_success: "Protect question successfully"
+      cant_protected: "You have error and can\'t protect question now"
+      remove_protect_success: "Remove protect question successfully"
+      remove_protect_fail: "Remove protect question failed"
     user:
       not_found: "This user is not found"
       email: "Your email not correct"
@@ -219,3 +251,10 @@ en:
         create:
           success: "Create topic successfully!"
           failed: "Create topic unsuccessfully!"
+
+  email:
+    notify_answer: "Some people answer your question"
+    have: "have"
+    question_last_day: "questions in last day"
+    notify_new_answer: "Your question have new answer"
+    have_new_question_in_topic: "You have new question in topic which you have followed"

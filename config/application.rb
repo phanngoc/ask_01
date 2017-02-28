@@ -1,6 +1,6 @@
-require_relative 'boot'
-
-require 'rails/all'
+require_relative "boot"
+require "csv"
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -12,8 +12,8 @@ module Ask
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.assets.precompile += Ckeditor.assets
-    config.assets.precompile += %w( ckeditor/* )
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.paths << Rails.root.join("vendor", "assets", "bower_components")
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.active_job.queue_adapter = :delayed_job
   end
 end

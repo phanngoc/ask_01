@@ -29,7 +29,6 @@ gem "react-rails"
 gem "gon"
 gem "i18n-js", ">= 3.0.0.rc11"
 gem "config"
-gem "will_paginate", "~> 3.1.0"
 gem "ransack"
 gem "public_activity"
 gem "cancancan"
@@ -39,6 +38,12 @@ gem "wdm", ">= 0.1.0" if Gem.win_platform?
 gem "pg"
 
 gem "pry"
+gem "social-share-button"
+gem "omniauth-facebook"
+gem "figaro"
+gem "delayed_job_active_record"
+gem "groupdate"
+gem "chartkick"
 
 
 group :development, :test do
