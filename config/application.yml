@@ -15,4 +15,4 @@ gmail_password: "1qasw23edfr45tg"
 
 facebook_app_id: "1637155526591850"
 facebook_app_secret: "a18e3d25d0ce8cac5e3c275b053e533b"
-facebook_callback_url: "http://localhost:3000/users/auth/facebook/callback"
+facebook_callback_url: "https://ask-que.herokuapp.com/users/auth/facebook/callback"
