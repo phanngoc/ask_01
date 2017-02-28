@@ -5,7 +5,9 @@
         <div class="original">
           <div class="header">
             <div class="title">
-              <h4><%= @question.title %></h4>
+              <h4>
+                <%= link_to @question.title, question_path(@question.id) %>
+              </h4>
             </div>
             <div class="wr-author">
               <div class="wr-image">
